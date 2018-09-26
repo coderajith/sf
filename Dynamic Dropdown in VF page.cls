@@ -1,7 +1,7 @@
 CONTROLLER:
 
 public with sharing class dynamiccontactlist {
-public List<projects__c> ContactTemp = new List<projects__c>();
+public List<Contact> ContactTemp = new List<Contact>();
     public dynamiccontactlist()
     {
      
@@ -10,11 +10,11 @@ public List<projects__c> ContactTemp = new List<projects__c>();
     {
         get
         {
-            ContactTemp = [Select City__C from projects__c];
+            ContactTemp = [Select name from Contact];
             contactlist = new set<SelectOption>();
-            for(projects__c con : ContactTemp)
+            for(Contact con : ContactTemp)
             {
-                contactlist.add(new SelectOption(con.City__C, con.City__C));
+                contactlist.add(new SelectOption(con.name, con.name));
             }
             return contactlist;
         }
