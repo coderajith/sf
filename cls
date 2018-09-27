@@ -8,11 +8,11 @@ public with sharing class ProjectSellStatusController {
     public String apartmenthead {get;set;}
     public String projectHead {get;set;}
     public string projectCity {get;set;}
-    //public List<SelectOption> options {get;set;}
-    public boolean showApartment {get;set;}
+    public List<SelectOption> options {get;set;}
+    public boolean showApartment {get;set;} 
     public boolean showWing {get;set;}
     public integer projectListSize {get;set;}
- 
+
         public projectSellStatusController(){
         /*  options = new list<selectoption>();
         	options.add(new selectoption('none','--None--'));
@@ -20,19 +20,21 @@ public with sharing class ProjectSellStatusController {
         	List<Schema.PicklistEntry> Values = fieldResult.getPicklistValues();
             for( Schema.PicklistEntry i : Values){
                 options.add(new SelectOption(i.getLabel(), i.getValue()));
-            }  */      	
+            }  */   
+            options = options();
         }
         
-        public set<SelectOption> options{
-			get{
-    			options = new set<SelectOption>();
-    			options.add(new selectoption('none','--None--'));
-    			for(projects__c con : [Select City__c from projects__c order by City__c]){
-        			options.add(new SelectOption(con.City__c, con.City__c));
-    			}
-    			return options;
+        public list<SelectOption> options(){
+			options = new list<SelectOption>();
+			set<string> stng = new set<string>();
+			options.add(new selectoption('none','--None--'));
+			for(projects__c a : [Select City__c from projects__c order by City__c]){
+    			stng.add(a.City__c);
 			}
-			set;
+			for (String s : stng) {
+            	options.add(new SelectOption(s, s));
+        	}
+			return options;
 		}
         
         public void showProjectList(){ 
