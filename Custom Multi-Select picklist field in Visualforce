@@ -1,3 +1,4 @@
+REFERENCE: https://hisrinu.wordpress.com/2011/05/30/custom-multi-select-picklist-field-in-visualforce/
 PAGR:
 
 <apex:page controller="multiselect">
