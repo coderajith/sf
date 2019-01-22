@@ -1,0 +1,11 @@
+list<lead> leadList = [select id,portal_id__c from lead];
+list<task> taskList = [select id,portal_id__C,WhoId from task];
+for(lead l : leadList){
+    for(task t : taskList){
+        if(l.portal_id__c == t.portal_id__c){
+            t.WhoId = l.id;
+        }
+    }
+}
+system.debug(taskList);
+update taskList;
