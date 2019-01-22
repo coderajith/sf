@@ -1,3 +1,5 @@
+Sample script to relate record with External id
+
 list<lead> leadList = [select id,portal_id__c from lead];
 list<task> taskList = [select id,portal_id__C,WhoId from task];
 for(lead l : leadList){
