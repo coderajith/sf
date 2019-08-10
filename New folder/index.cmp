@@ -1,0 +1,17 @@
+<aura:component>
+    <ltng:require styles="{!$Resource.select2+ '/SearchablePicklist/select2.min.css'}"
+                  scripts="{!join(',',$Resource.select2 + '/SearchablePicklist/jquery-2.2.4.min.js', $Resource.select2 + '/SearchablePicklist/select2.min.js')}"
+          afterScriptsLoaded="{!c.loadJquery}"/>
+
+    <select name="state" class="select2Class" style="width:100%">
+        <option value="">Please select</option>
+        <option value="AL">Alabama</option>
+        <option value="WY">Wyoming</option>
+        <option value="xx">xx</option>
+        <option value="yy">yy</option>
+        <option value="zz">zz</option>
+        <option value="rr">rr</option>
+        <option value="tt">tt</option>
+        <option value="mm">mm</option>
+    </select>
+</aura:component>
