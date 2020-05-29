@@ -1,0 +1,33 @@
+<aura:component controller="OpportunityDetailController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="relationshipTypes" type="list" />
+    <aura:attribute name="relationshipTypesDummy" type="list" />
+    <aura:attribute name="selectedType" type="string" default=''/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    
+    <div class="slds-form-element">
+        <div class="slds-form-element__control">
+    		<div class="slds-combobox_container"  width="100%">
+    			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+    				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <span onkeyup="{!c.filter}">
+                            <lightning:input label="Relationship Type" value="{!v.selectedType}" required="true"/>
+                        </span>
+    					<!--<input type="text" value="{!v.selectedType}" class="slds-input slds-combobox__input" id="combobox-id-1"/>
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                            <lightning:icon iconName="utility:down" size="x-small" alternativeText="Error!" title="Error" />
+                        </span>-->
+    				</div>
+    				<div id="relationTypePicklist" class="slds-dropdown slds-dropdown_fluid" style="visibility:visible;display:block;margin:0px">
+                        <ul>
+                            <aura:iteration items="{!v.relationshipTypes}" var="rt">
+                            	<li id="{!rt}" style="padding:5px 0px 5px 15px" onclick="{!c.selectType}">{!rt}</li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    </div>
+</aura:component>   
